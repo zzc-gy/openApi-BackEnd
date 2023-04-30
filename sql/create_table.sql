@@ -23,42 +23,22 @@ create table if not exists user
     index idx_unionId (unionId)
 ) comment '用户' collate = utf8mb4_unicode_ci;
 
--- 帖子表
-create table if not exists post
+-- 接口信息表
+CREATE TABLE `interface_info`
 (
-    id         bigint auto_increment comment 'id' primary key,
-    title      varchar(512)                       null comment '标题',
-    content    text                               null comment '内容',
-    tags       varchar(1024)                      null comment '标签列表（json 数组）',
-    thumbNum   int      default 0                 not null comment '点赞数',
-    favourNum  int      default 0                 not null comment '收藏数',
-    userId     bigint                             not null comment '创建用户 id',
-    createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
-    updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
-    isDelete   tinyint  default 0                 not null comment '是否删除',
-    index idx_userId (userId)
-) comment '帖子' collate = utf8mb4_unicode_ci;
-
--- 帖子点赞表（硬删除）
-create table if not exists post_thumb
-(
-    id         bigint auto_increment comment 'id' primary key,
-    postId     bigint                             not null comment '帖子 id',
-    userId     bigint                             not null comment '创建用户 id',
-    createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
-    updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
-    index idx_postId (postId),
-    index idx_userId (userId)
-) comment '帖子点赞';
-
--- 帖子收藏表（硬删除）
-create table if not exists post_favour
-(
-    id         bigint auto_increment comment 'id' primary key,
-    postId     bigint                             not null comment '帖子 id',
-    userId     bigint                             not null comment '创建用户 id',
-    createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
-    updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
-    index idx_postId (postId),
-    index idx_userId (userId)
-) comment '帖子收藏';
+    `id`             bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `createUserId`   bigint(20)          NOT NULL COMMENT '创建人ID',
+    `name`           varchar(100)        NOT NULL COMMENT '接口名称',
+    `describe`       varchar(255)        NOT NULL COMMENT '描述',
+    `status`         tinyint(4)          NOT NULL DEFAULT '0' COMMENT '状态 0 关闭 1开启',
+    `url`            varchar(255)        NOT NULL COMMENT '请求地址',
+    `method`         varchar(10)         NOT NULL COMMENT '请求类型',
+    `requestHeader`  varchar(100)        NOT NULL COMMENT '请求头信息',
+    `responseHeader` varchar(100)        NOT NULL COMMENT '响应头信息',
+    `createTime`     bigint(20) unsigned NOT NULL,
+    `updateTime`     bigint(20) unsigned NOT NULL,
+    `isDel`          tinyint(4)          NOT NULL DEFAULT '0' COMMENT '是否删除 0未删除 1删除',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4 COMMENT ='接口信息表';
