@@ -1,0 +1,21 @@
+server:
+  port: 8101
+spring:
+  # 数据库配置
+  # todo 需替换配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.99.182.41:3306/openApi
+    username: root
+    password: gyzzc1314
+  # Redis 配置
+  # todo 需替换配置
+  redis:
+    database: 1
+    host: 47.99.182.41
+    port: 6379
+    timeout: 5000
+mybatis-plus:
+  configuration:
+    # 生产环境关闭日志
+    log-impl: ''
