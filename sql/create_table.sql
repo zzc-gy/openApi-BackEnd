@@ -42,3 +42,18 @@ CREATE TABLE `interface_info`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='接口信息表';
+
+
+-- 用户表接口调用次数表
+create table if not exists user_interface_invoke
+(
+    id          bigint auto_increment comment 'id' primary key,
+    userId      bigint(20)                         not null comment '用户ID',
+    interfaceId bigint(20)                         not null comment '接口ID',
+    totalNum    int(10)                            not null comment '总调用次数',
+    leftNum     int(10)                            not null comment '剩余调用次数',
+    status      tinyint(4)                         NOT NULL DEFAULT '0' COMMENT '状态 0 关闭 1开启',
+    createTime  datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime  datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete    tinyint  default 0                 not null comment '是否删除 0 默认 1 逻辑删除'
+) comment '用户接口调用次数表' collate = utf8mb4_unicode_ci;

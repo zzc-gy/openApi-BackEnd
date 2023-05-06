@@ -79,3 +79,7 @@ cos:
     secretKey: xxx
     region: xxx
     bucket: xxx
+open-api:
+  client:
+    secret-key: asdasdwqewq
+    access-key: zzc

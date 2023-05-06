@@ -5,24 +5,27 @@
 <mapper namespace="com.zzc.mapper.InterfaceInfoMapper">
 
     <resultMap id="BaseResultMap" type="com.zzc.model.entity.InterfaceInfo">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="createUserId" column="createUserId" jdbcType="BIGINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="describe" column="describe" jdbcType="VARCHAR"/>
-            <result property="status" column="status" jdbcType="TINYINT"/>
-            <result property="url" column="url" jdbcType="VARCHAR"/>
-            <result property="method" column="method" jdbcType="VARCHAR"/>
-            <result property="requestHeader" column="requestHeader" jdbcType="VARCHAR"/>
-            <result property="responseHeader" column="responseHeader" jdbcType="VARCHAR"/>
-            <result property="createTime" column="createTime" jdbcType="BIGINT"/>
-            <result property="updateTime" column="updateTime" jdbcType="BIGINT"/>
-            <result property="isDel" column="isDel" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="createUserId" column="createUserId" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="describe" column="describe" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="method" column="method" jdbcType="VARCHAR"/>
+        <result property="requestHeader" column="requestHeader" jdbcType="VARCHAR"/>
+        <result property="responseHeader" column="responseHeader" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="BIGINT"/>
+        <result property="updateTime" column="updateTime" jdbcType="BIGINT"/>
+        <result property="isDel" column="isDel" jdbcType="TINYINT"/>
+        <result property="requestParam" column="requestParam" jdbcType="VARCHAR"/>
+        <result property="responseParam" column="responseParam" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,createUserId,name,
-        desc,status,url,
+        id
+        ,createUserId,name,
+        describe,status,url,
         method,requestHeader,responseHeader,
-        createTime,updateTime,isDel
+        createTime,updateTime,isDel,requestParam,responseParam
     </sql>
 </mapper>
