@@ -1,17 +1,17 @@
 package com.zzc;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@MapperScan("com.zzc.mapper")
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableDubbo
-public class OpenApiBackEndApplication {
+public class OpenApiGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OpenApiBackEndApplication.class, args);
+        SpringApplication.run(OpenApiGatewayApplication.class, args);
     }
+
 
 }

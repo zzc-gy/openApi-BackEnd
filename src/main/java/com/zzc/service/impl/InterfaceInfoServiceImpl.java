@@ -2,7 +2,6 @@ package com.zzc.service.impl;
 
 import com.alibaba.excel.util.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.gson.Gson;
 import com.zzc.client.UserClient;
 import com.zzc.common.ErrorCode;
 import com.zzc.exception.BusinessException;
@@ -21,7 +20,7 @@ import org.springframework.stereotype.Service;
  * @description 针对表【interface_info(接口信息表)】的数据库操作Service实现
  * @createDate 2023-04-29 12:59:38
  */
-@Service
+@Service("interfaceInfoServiceImpl")
 public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, InterfaceInfo> implements InterfaceInfoService {
 
     @Autowired
@@ -61,11 +60,9 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
         //}
 
         UserClient userClient = new UserClient(user.getUserAccount(), user.getSecretKey());
-        Gson gson = new Gson();
-        com.zzc.entity.User invokeUser = gson.fromJson(request.getUserRequestParam(), com.zzc.entity.User.class);
 
         redisTemplate.boundValueOps(key).set(1, 10000);
-        return userClient.getUserByBody(invokeUser);
+        return userClient.getUserByBody(user);
     }
 }
 

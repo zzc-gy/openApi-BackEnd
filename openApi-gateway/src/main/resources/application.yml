@@ -1,0 +1,33 @@
+spring:
+#  application:
+#    datasource:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://47.99.182.41:3306/openApi
+#      username: root
+#      password: gyzzc1314
+  cloud:
+    gateway:
+      default-filters:
+        - AddRequestHeader=source, zzc
+      routes:
+        - id: api_route
+          uri: http://localhost:8123
+          predicates:
+            - Path=/api/{api_url}/**
+server:
+  port: 9621
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace
+dubbo:
+  registry:
+    id: nacos-registry
+    address: nacos://localhost:8848
+  application:
+    name: opanAPi-backEnd
+  protocol:
+    name: dubbo
+    prot: -1

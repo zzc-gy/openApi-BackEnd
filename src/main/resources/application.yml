@@ -27,11 +27,6 @@ spring:
     host: 47.99.182.41
     port: 6379
     timeout: 5000
-  # 文件上传
-  servlet:
-    multipart:
-      # 大小限制
-      max-file-size: 10MB
 server:
   address: 0.0.0.0
   port: 8101
@@ -50,6 +45,15 @@ mybatis-plus:
       logic-delete-field: isDel # 全局逻辑删除的实体字段名
       logic-delete-value: 1 # 逻辑已删除值（默认为 1）
       logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+dubbo:
+  registry:
+    id: nacos-registry
+    address: nacos://localhost:8848
+  application:
+    name: opanAPi-backEnd
+  protocol:
+    name: dubbo
+    prot: -1
 # 微信相关
 wx:
   # 微信公众平台
@@ -71,15 +75,3 @@ wx:
   open:
     appId: xxx
     appSecret: xxx
-# 对象存储
-# todo 需替换配置
-cos:
-  client:
-    accessKey: xxx
-    secretKey: xxx
-    region: xxx
-    bucket: xxx
-open-api:
-  client:
-    secret-key: asdasdwqewq
-    access-key: zzc
